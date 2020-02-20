@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunmengjie.mapper.ArticleMapper">
+
+	<select id="list" resultType="com.sunmengjie.entity.Article">
+		SELECT * FROM cms_article  where 1=1
+  			<if test="c1!=null and c1!=''">
+  				and created >=#{c1}
+  			</if>
+  			<if test="c2!=null and c2!=''">
+  			and	created  &lt;= #{c2}
+  			</if>
+  			<if test="sortName!=null and sortName!=''">
+  			order by ${sortName}  desc
+  			</if>
+		
+	</select>
+	
+</mapper>
